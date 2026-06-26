@@ -1,0 +1,20 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images"
+
+collections:
+  - name: "settings"
+    label: "Paramètres du site"
+    files:
+      - name: "general"
+        label: "Informations générales"
+        file: "data.json"
+        fields:
+          - { label: "Dates du stage", name: "stage_dates", widget: "string" }
+          - { label: "Places restantes", name: "stage_places", widget: "string" }
+          - { label: "Prix du stage", name: "stage_prix", widget: "string" }
+          - { label: "Prix cours solo", name: "prix_solo", widget: "string" }
+          - { label: "Prix cours duo", name: "prix_duo", widget: "string" }
+          - { label: "Prix pack 10h", name: "prix_pack", widget: "string" }
