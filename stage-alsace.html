@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stage Padel Alsace – Strasbourg | Enzo Gongora</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,600;0,700;1,300&family=Barlow+Condensed:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --black: #0a0a0a; --white: #f5f2ec; --clay: #c8421a; --clay-dark: #9e3112;
+    --clay-light: #e8633d; --sand: #d4b896; --text-muted: #8a8278; --gold: #c9a84c;
+    --font-display: 'Bebas Neue', sans-serif; --font-body: 'Barlow', sans-serif;
+    --font-condensed: 'Barlow Condensed', sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--black); color: var(--white); font-family: var(--font-body); font-weight: 300; overflow-x: hidden; }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 4rem; background: rgba(10,10,10,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(200,66,26,0.2); }
+  .nav-logo { font-family: var(--font-display); font-size: 1.6rem; letter-spacing: 0.08em; color: var(--white); text-decoration: none; }
+  .nav-logo span { color: var(--clay); }
+  .nav-back { display: flex; align-items: center; gap: 0.5rem; font-family: var(--font-condensed); font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--sand); text-decoration: none; transition: color 0.2s; }
+  .nav-back:hover { color: var(--clay-light); }
+  .nav-back::before { content: '←'; }
+  .hero { min-height: 70vh; position: relative; display: flex; align-items: flex-end; overflow: hidden; padding-top: 80px; }
+  .hero-bg { position: absolute; inset: 0; background: linear-gradient(to right, rgba(10,10,10,0.92) 45%, rgba(10,10,10,0.4) 100%), linear-gradient(to top, rgba(10,10,10,0.9) 0%, transparent 60%), url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&q=80') center/cover no-repeat; }
+  .hero-content { position: relative; padding: 0 4rem 5rem; max-width: 700px; }
+  .hero-flag { font-size: 3rem; margin-bottom: 1rem; display: block; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(200,66,26,0.15); border: 1px solid rgba(200,66,26,0.4); color: var(--clay-light); font-family: var(--font-condensed); font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; padding: 0.4rem 1rem; border-radius: 1px; margin-bottom: 1.5rem; }
+  .hero-badge::before { content: ''; display: inline-block; width: 6px; height: 6px; background: var(--clay); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.3)} }
+  .hero h1 { font-family: var(--font-display); font-size: clamp(3.5rem, 7vw, 6rem); line-height: 0.92; letter-spacing: 0.02em; margin-bottom: 1.2rem; }
+  .hero h1 em { font-style: normal; color: var(--clay); display: block; }
+  .hero-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 2rem; }
+  .hero-tag { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); color: var(--sand); font-family: var(--font-condensed); font-size: 0.8rem; letter-spacing: 0.08em; padding: 0.4rem 0.9rem; border-radius: 1px; }
+  .hero-tag.hot { background: rgba(200,66,26,0.2); border-color: rgba(200,66,26,0.4); color: var(--clay-light); }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 4rem; }
+  .section-label { font-family: var(--font-condensed); font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--clay); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.8rem; }
+  .section-label::after { content: ''; flex: 0 0 40px; height: 1px; background: var(--clay); opacity: 0.5; }
+  .sticky-cta { position: sticky; top: 80px; z-index: 50; background: rgba(10,10,10,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(200,66,26,0.2); padding: 0.9rem 4rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  .sticky-info { font-family: var(--font-condensed); font-size: 0.9rem; color: var(--sand); }
+  .sticky-info strong { color: var(--white); }
+  .sticky-info .spots { color: var(--clay-light); font-weight: 700; }
+  .btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--clay); color: var(--white); font-family: var(--font-condensed); font-size: 0.88rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700; padding: 0.85rem 2rem; text-decoration: none; border-radius: 1px; transition: background 0.2s; border: none; cursor: pointer; }
+  .btn-primary:hover { background: var(--clay-light); }
+  .main-grid { display: grid; grid-template-columns: 1fr 380px; gap: 4rem; padding: 5rem 0; align-items: start; }
+  .content-block { margin-bottom: 3.5rem; }
+  .block-title { font-family: var(--font-display); font-size: 2rem; letter-spacing: 0.03em; color: var(--white); margin-bottom: 1.2rem; }
+  .block-text { font-size: 0.97rem; line-height: 1.8; color: var(--sand); margin-bottom: 1rem; }
+  .block-text strong { color: var(--white); font-weight: 600; }
+  .programme { display: flex; flex-direction: column; gap: 0; }
+  .prog-day { border-left: 2px solid rgba(200,66,26,0.25); padding-left: 1.5rem; padding-bottom: 2rem; position: relative; }
+  .prog-day:last-child { padding-bottom: 0; border-left-color: transparent; }
+  .prog-day::before { content: ''; position: absolute; left: -5px; top: 0; width: 8px; height: 8px; background: var(--clay); border-radius: 50%; }
+  .prog-day-label { font-family: var(--font-condensed); font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--clay); margin-bottom: 0.3rem; }
+  .prog-day-title { font-family: var(--font-condensed); font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 0.5rem; }
+  .prog-day-desc { font-size: 0.88rem; line-height: 1.65; color: var(--sand); }
+  .includes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(200,66,26,0.08); }
+  .include-item { background: #111; padding: 1.2rem 1.5rem; display: flex; align-items: flex-start; gap: 0.8rem; }
+  .include-check { color: var(--clay); font-size: 1rem; flex-shrink: 0; margin-top: 0.1rem; }
+  .include-text { font-size: 0.88rem; color: var(--sand); line-height: 1.5; }
+  .include-text strong { color: var(--white); font-weight: 600; display: block; margin-bottom: 0.1rem; }
+  .not-included { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1rem; }
+  .not-tag { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); color: var(--text-muted); font-family: var(--font-condensed); font-size: 0.78rem; letter-spacing: 0.05em; padding: 0.35rem 0.8rem; border-radius: 1px; }
+  .not-tag::before { content: '✗ '; color: rgba(200,66,26,0.5); }
+  .infos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(255,255,255,0.04); }
+  .info-item { background: #0f0f0f; padding: 1.2rem 1.5rem; }
+  .info-label { font-family: var(--font-condensed); font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.3rem; }
+  .info-value { font-family: var(--font-condensed); font-size: 1rem; font-weight: 600; color: var(--white); }
+  .sidebar { position: sticky; top: 140px; }
+  .form-box { background: #111; border: 1px solid rgba(200,66,26,0.15); border-radius: 2px; overflow: hidden; }
+  .form-box-header { background: var(--clay); padding: 1.5rem 1.8rem; position: relative; overflow: hidden; }
+  .form-box-header::after { content: '🇫🇷'; position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); font-size: 2.5rem; opacity: 0.4; }
+  .form-box-title { font-family: var(--font-display); font-size: 1.6rem; letter-spacing: 0.03em; color: var(--white); line-height: 1.1; }
+  .form-box-sub { font-family: var(--font-condensed); font-size: 0.78rem; letter-spacing: 0.08em; color: rgba(255,255,255,0.75); margin-top: 0.3rem; }
+  .spots-counter { display: flex; align-items: center; gap: 0.5rem; margin-top: 0.8rem; background: rgba(0,0,0,0.2); padding: 0.5rem 0.8rem; border-radius: 1px; }
+  .spots-dot { width: 8px; height: 8px; background: #4ade80; border-radius: 50%; animation: pulse 1.5s infinite; }
+  .spots-text { font-family: var(--font-condensed); font-size: 0.78rem; color: rgba(255,255,255,0.9); }
+  .spots-text strong { color: #fff; }
+  .form-body { padding: 1.8rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.35rem; margin-bottom: 0.9rem; }
+  .form-group label { font-family: var(--font-condensed); font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); }
+  .form-group input, .form-group select { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 1px; padding: 0.75rem 0.9rem; color: var(--white); font-family: var(--font-body); font-size: 0.9rem; font-weight: 300; transition: border-color 0.2s; outline: none; width: 100%; -webkit-appearance: none; }
+  .form-group input:focus, .form-group select:focus { border-color: rgba(200,66,26,0.6); background: rgba(200,66,26,0.04); }
+  .form-group .optional { color: rgba(138,130,120,0.6); font-size: 0.6rem; margin-left: 0.4rem; text-transform: none; letter-spacing: 0; }
+  .form-group select option { background: #111; }
+  .price-block { background: rgba(200,66,26,0.06); border: 1px solid rgba(200,66,26,0.15); padding: 1.5rem; border-radius: 1px; margin-bottom: 1.5rem; }
+  .price-row { display: flex; justify-content: space-between; align-items: baseline; padding: 0.4rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .price-row:last-child { border-bottom: none; }
+  .price-label { font-size: 0.85rem; color: var(--sand); }
+  .price-val { font-family: var(--font-condensed); font-weight: 600; color: var(--white); font-size: 0.95rem; }
+  .price-total-row { display: flex; justify-content: space-between; align-items: baseline; margin-top: 0.8rem; padding-top: 0.8rem; border-top: 1px solid rgba(200,66,26,0.3); }
+  .price-total-label { font-family: var(--font-condensed); font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); }
+  .price-total-val { font-family: var(--font-display); font-size: 2rem; color: var(--clay); line-height: 1; }
+  .form-submit { width: 100%; padding: 1rem; background: var(--clay); color: var(--white); border: none; border-radius: 1px; font-family: var(--font-condensed); font-size: 0.92rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700; cursor: pointer; transition: background 0.2s; }
+  .form-submit:hover { background: var(--clay-light); }
+  .form-trust { display: flex; align-items: center; gap: 0.4rem; margin-top: 0.8rem; font-size: 0.72rem; color: var(--text-muted); justify-content: center; }
+  .form-success { display: none; text-align: center; padding: 2.5rem 1.5rem; }
+  .form-success .icon { font-size: 2.5rem; margin-bottom: 0.8rem; }
+  .form-success h3 { font-family: var(--font-display); font-size: 1.5rem; color: var(--white); margin-bottom: 0.5rem; }
+  .form-success p { font-size: 0.85rem; color: var(--sand); line-height: 1.7; }
+  footer { background: #060606; padding: 2.5rem 0; border-top: 1px solid rgba(200,66,26,0.1); margin-top: 2rem; }
+  .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+  .footer-copy { font-size: 0.8rem; color: var(--text-muted); }
+  .footer-link { font-family: var(--font-condensed); font-size: 0.8rem; color: var(--sand); text-decoration: none; transition: color 0.2s; }
+  .footer-link:hover { color: var(--clay-light); }
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.2rem; }
+    .hero-content { padding: 0 1.2rem 4rem; }
+    .sticky-cta { padding: 0.8rem 1.2rem; }
+    .container { padding: 0 1.2rem; }
+    .main-grid { grid-template-columns: 1fr; gap: 2rem; padding: 3rem 0; }
+    .sidebar { position: static; }
+    .includes-grid, .infos-grid { grid-template-columns: 1fr; }
+    footer .container { padding: 0 1.2rem; }
+    .footer-inner { flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">ENZO<span>.</span>PADEL</a>
+  <a href="index.html#stages" class="nav-back">Retour aux stages</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <span class="hero-flag">🇫🇷</span>
+    <div class="hero-badge">Stage week-end · Strasbourg · Alsace</div>
+    <h1>Stage<br><em>Alsace</em></h1>
+    <div class="hero-tags">
+      <span class="hero-tag">3 jours / 2 nuits</span>
+      <span class="hero-tag">6 joueurs max</span>
+      <span class="hero-tag">Week-ends récurrents</span>
+      <span class="hero-tag">Intermédiaires</span>
+      <span class="hero-tag hot">📅 Prochaine session à confirmer</span>
+    </div>
+  </div>
+</section>
+
+<div class="sticky-cta">
+  <div class="sticky-info">
+    <strong>Stage Alsace · Strasbourg</strong> · Week-end intensif · <span class="spots">Places limitées à 6</span>
+  </div>
+  <a href="#inscription" class="btn-primary">Je m'inscris →</a>
+</div>
+
+<div class="container">
+  <div class="main-grid">
+
+    <div class="content">
+
+      <div class="content-block">
+        <div class="section-label">Le concept</div>
+        <h2 class="block-title">Un week-end qui change tout</h2>
+        <p class="block-text">Pas besoin de traverser l'Europe pour progresser. Le stage Alsace, c'est <strong>3 jours d'entraînement intensif à deux pas de chez toi</strong> — sur les meilleurs courts de la région strasbourgeoise.</p>
+        <p class="block-text">Format conçu pour les joueurs qui veulent un vrai coup de fouet sans partir une semaine. Du vendredi soir au dimanche midi : <strong>9 à 10h de pratique encadrée</strong>, analyse vidéo, travail tactique et physique spécifique.</p>
+        <p class="block-text">Groupe limité à <strong>6 joueurs maximum</strong> — Enzo connaît le prénom de chaque joueur et travaille les points faibles de chacun. Pas un stage de masse. Une progression réelle.</p>
+      </div>
+
+      <div class="content-block">
+        <div class="section-label">Programme</div>
+        <h2 class="block-title">3 jours, heure par heure</h2>
+        <div class="programme">
+          <div class="prog-day">
+            <div class="prog-day-label">Vendredi soir — Jour 1</div>
+            <div class="prog-day-title">Arrivée & évaluation</div>
+            <div class="prog-day-desc">Accueil à 18h. Séance d'évaluation technique de 2h : Enzo filme chaque joueur, identifie les axes prioritaires. Briefing collectif sur les objectifs du week-end.</div>
+          </div>
+          <div class="prog-day">
+            <div class="prog-day-label">Samedi — Jour 2</div>
+            <div class="prog-day-title">Journée technique & tactique</div>
+            <div class="prog-day-desc">Matin (9h–12h30) : travail technique intensif — coups spécifiques, déplacements, timing. Après-midi (14h–17h30) : tactique de couple, patterns de jeu, matchs commentés + analyse vidéo collective.</div>
+          </div>
+          <div class="prog-day">
+            <div class="prog-day-label">Dimanche — Jour 3</div>
+            <div class="prog-day-title">Physique, matchs & bilan</div>
+            <div class="prog-day-desc">Matin (9h–11h30) : préparation physique spécifique padel + tournoi interne. Bilan individuel avec Enzo, remise du plan de progression personnalisé. Fin du stage à 12h.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-block">
+        <div class="section-label">La formule</div>
+        <h2 class="block-title">Ce qui est inclus</h2>
+        <div class="includes-grid">
+          <div class="include-item">
+            <span class="include-check">✓</span>
+            <div class="include-text"><strong>Coaching Enzo (9–10h)</strong>Séances guidées, correction individuelle continue</div>
+          </div>
+          <div class="include-item">
+            <span class="include-check">✓</span>
+            <div class="include-text"><strong>Location des courts</strong>Courts couverts ou outdoor selon météo</div>
+          </div>
+          <div class="include-item">
+            <span class="include-check">✓</span>
+            <div class="include-text"><strong>Analyses vidéo</strong>Enregistrements et décryptages de tes matchs</div>
+          </div>
+          <div class="include-item">
+            <span class="include-check">✓</span>
+            <div class="include-text"><strong>Plan de progression</strong>Document personnalisé remis en fin de stage</div>
+          </div>
+          <div class="include-item">
+            <span class="include-check">✓</span>
+            <div class="include-text"><strong>Groupe WhatsApp privé</strong>Suivi post-stage avec Enzo pendant 1 mois</div>
+          </div>
+          <div class="include-item">
+            <span class="include-check">✓</span>
+            <div class="include-text"><strong>Collations</strong>Boissons et encas pendant les séances</div>
+          </div>
+        </div>
+        <p style="font-size:0.82rem; color:var(--text-muted); margin-top:1rem;">Non inclus :</p>
+        <div class="not-included">
+          <span class="not-tag">Hébergement (optionnel sur demande)</span>
+          <span class="not-tag">Repas midi & soir</span>
+          <span class="not-tag">Transport</span>
+        </div>
+      </div>
+
+      <div class="content-block">
+        <div class="section-label">Infos pratiques</div>
+        <h2 class="block-title">Tout ce qu'il faut savoir</h2>
+        <div class="infos-grid">
+          <div class="info-item">
+            <div class="info-label">Lieu</div>
+            <div class="info-value">Strasbourg & région 🇫🇷</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Format</div>
+            <div class="info-value">Vendredi soir → Dimanche midi</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Durée</div>
+            <div class="info-value">3 jours / 2 nuits</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Groupe</div>
+            <div class="info-value">6 joueurs maximum</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Niveau requis</div>
+            <div class="info-value">Intermédiaire et +</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Fréquence</div>
+            <div class="info-value">Sessions régulières</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Acompte</div>
+            <div class="info-value">30% à l'inscription</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Annulation gratuite</div>
+            <div class="info-value">Jusqu'à 14 jours avant</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar" id="inscription">
+      <div class="form-box">
+        <div class="form-box-header">
+          <div class="form-box-title">Stage Alsace<br>Strasbourg</div>
+          <div class="form-box-sub">Week-end intensif · 3 jours</div>
+          <div class="spots-counter">
+            <div class="spots-dot"></div>
+            <div class="spots-text"><strong>6 places</strong> par session</div>
+          </div>
+        </div>
+        <div class="form-body">
+          <div class="price-block">
+            <div class="price-row">
+              <span class="price-label">Coaching (9–10h)</span>
+              <span class="price-val">inclus</span>
+            </div>
+            <div class="price-row">
+              <span class="price-label">Courts & équipements</span>
+              <span class="price-val">inclus</span>
+            </div>
+            <div class="price-row">
+              <span class="price-label">Analyses vidéo</span>
+              <span class="price-val">inclus</span>
+            </div>
+            <div class="price-total-row">
+              <span class="price-total-label">Tarif tout compris</span>
+              <span class="price-total-val">À définir</span>
+            </div>
+          </div>
+
+          <form name="stage-alsace" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="formAlsace">
+            <input type="hidden" name="form-name" value="stage-alsace">
+            <input name="bot-field" style="display:none" aria-hidden="true">
+
+            <div class="form-group">
+              <label for="prenom">Prénom</label>
+              <input type="text" id="prenom" name="prenom" placeholder="Sophie" required>
+            </div>
+            <div class="form-group">
+              <label for="nom">Nom</label>
+              <input type="text" id="nom" name="nom" placeholder="Dupont" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="sophie@email.com" required>
+            </div>
+            <div class="form-group">
+              <label for="tel">Téléphone</label>
+              <input type="tel" id="tel" name="telephone" placeholder="+33 6 00 00 00 00" required>
+            </div>
+            <div class="form-group">
+              <label for="niveau">Niveau de jeu</label>
+              <select id="niveau" name="niveau" required>
+                <option value="">Mon niveau…</option>
+                <option>Intermédiaire (j'échange régulièrement)</option>
+                <option>Avancé (je joue en club)</option>
+                <option>Compétiteur (tournois réguliers)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="ville">Ville</label>
+              <input type="text" id="ville" name="ville" placeholder="Strasbourg, Schiltigheim…">
+            </div>
+            <div class="form-group">
+              <label for="instagram">Instagram <span class="optional">(optionnel)</span></label>
+              <input type="text" id="instagram" name="instagram" placeholder="@tonpseudo">
+            </div>
+
+            <button type="submit" class="form-submit">Je m'inscris →</button>
+            <p class="form-trust">🔒 Enzo te recontacte sous 24h.</p>
+          </form>
+
+          <div class="form-success" id="successAlsace">
+            <div class="icon">🎾</div>
+            <h3>Inscription envoyée !</h3>
+            <p>Enzo te contacte personnellement dans les 24h pour confirmer ta place et t'envoyer toutes les infos pratiques.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <span class="footer-copy">© 2025 Enzo Gongora Padel Coach</span>
+      <a href="index.html" class="footer-link">← Retour au site principal</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('formAlsace').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const form = this;
+    const btn = form.querySelector('button[type="submit"]');
+    btn.textContent = 'Envoi en cours…';
+    btn.disabled = true;
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(new FormData(form)).toString()
+    })
+    .then(() => {
+      form.style.display = 'none';
+      document.getElementById('successAlsace').style.display = 'block';
+    })
+    .catch(() => {
+      btn.textContent = 'Erreur — réessaie';
+      btn.disabled = false;
+    });
+  });
+</script>
+</body>
+</html>
