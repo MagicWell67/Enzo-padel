@@ -25,7 +25,8 @@
   }
 
   html { scroll-behavior: smooth; }
-  body { background: var(--black); color: var(--white); font-family: var(--font-body); font-weight: 300; overflow-x: hidden; }
+  
+ body { background: var(--black); color: var(--white); font-family: var(--font-body); font-weight: 300; overflow-x: hidden; }
 
   /* NAV */
   nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 4rem; transition: background 0.4s, backdrop-filter 0.4s; }
@@ -313,6 +314,20 @@
   }
 </style>
 </head>
+ <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", user => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => {
+          document.location.href = "/admin/";
+        });
+      }
+    });
+  }
+</script>
+<body>
+  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 <body>
 
 <nav id="mainNav">
